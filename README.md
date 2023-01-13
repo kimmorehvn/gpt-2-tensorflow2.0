@@ -1,3 +1,36 @@
+# Moreh AI Framework prepare to support, this model was validated on A100 GPU
+Original repo: https://github.com/akanyaani/gpt-2-tensorflow2.0
+
+## Install on A100 (TF2.8.0):
+```bash
+conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
+
+pip install tensorflow-gpu==2.8.0
+pip install -r requirements.txt
+pip install colorama lxml regex
+```
+
+## Install on MAF:
+```
+conda create -n gpt2-tf python=3.8
+update-moreh --force --tensorflow
+```
+
+## Prepare data
+```bash
+python pre_process.py
+```
+
+## Training
+```bash
+python train_gpt2.py 2>&1 | tee gpt2-tf-maf_v23.1.1.log
+```
+
+--------------
+# Original readme:
+---------------
+
 # GPT-2 Pre-training and text generation, implemented in Tensorflow 2.0
 
 Originally implemented in tensorflow 1.14 by OapenAi :- ["openai/gpt-2"](https://github.com/openai/gpt-2). OpenAi GPT-2 Paper:-["Language Models are Unsupervised Multitask Learners"](https://d4mucfpksywv.cloudfront.net/better-language-models/language-models.pdf)
